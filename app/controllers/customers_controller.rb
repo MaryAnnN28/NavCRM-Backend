@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
 
    def create
       customer = Customer.new(customer_params)
-      customer.user_id = User.first.id
+      customer.user_id = User.first.id 
       customer.save
       render json: customer
    end
