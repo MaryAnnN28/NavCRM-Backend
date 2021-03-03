@@ -9,10 +9,16 @@ class CustomersController < ApplicationController
       render json: customer.to_json(customer_serializer_options)
    end
 
+   # This create method below also creates empty tasks when customer is created 
+   # def create
+   #    customer = Customer.new(customer_params)
+   #    customer.user_ids = User.first.id 
+   #    customer.save
+   #    render json: customer.to_json
+   # end
+
    def create
-      customer = Customer.new(customer_params)
-      customer.user_id = User.first.id 
-      customer.save
+      customer = Customer.create(customer_params)
       render json: customer
    end
 
@@ -36,7 +42,7 @@ class CustomersController < ApplicationController
       {
          include: {
             tasks: {
-               except: [:id, :customer_id, :user_id, :updated_at]
+               except: [:customer_id, :user_id, :updated_at]
             }
          }, 
          except: [:updated_at]

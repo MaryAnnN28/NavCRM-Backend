@@ -11,9 +11,11 @@ class UsersController < ApplicationController
 
    def create
       user = User.new(user_params)
-      user.user_id = User.first.id
-      user.save
-      render json: user
+      if user.save
+         render json: user
+      else 
+         render json: { error_message: "Something went wrong"}
+      end
    end
 
    def update 
