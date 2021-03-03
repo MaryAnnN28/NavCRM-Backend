@@ -35,15 +35,18 @@ class CustomersController < ApplicationController
    private
 
    def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :company, :job_title, :industry, :email, :phone, :notes)
+      params.require(:customer).permit(:first_name, :last_name, :company, :job_title, :industry, :email, :phone, :notes, :user_id, :task_id)
    end
 
    def customer_serializer_options()
       {
          include: {
             tasks: {
-               except: [:customer_id, :user_id, :updated_at]
-            }
+               except: [:updated_at]
+            } 
+            # users: {
+            #    only: [:id, :first_name, :last_name]
+            # }
          }, 
          except: [:updated_at]
       }

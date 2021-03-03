@@ -11,26 +11,25 @@ class TasksController < ApplicationController
 
    # def create
    #    task = Task.new(task_params)
-   #    task.user_ids = User.first.id
    #    if task.save
-   #       render json: task.to_json(include: {
-   #             customers: {only: [:id, :first_name, :last_name]}
-   #          },
-   #          except: [:updated_at])
+   #       render json: task.to_json(task_serializer_options)
    #    else
    #       render json: {error: "Unable to create new task"}
    #    end
    # end
 
+   # VERSION # 1 - WORKS EXCEPT CAN'T READ 
    # def create
    #    task = Task.create(task_serializer_options)
    #    render json: task
    # end
 
+   # VERSION # 3  - WORKS AND I SEE DATA IN RAILS CONSOLE, BUT DOES NOT PERSIST
    def create
       task = Task.create(task_params)
       render json: task
    end
+
 
 
    def update
@@ -61,7 +60,7 @@ class TasksController < ApplicationController
             user: {
                only: [:first_name, :last_name, :id]
             }
-         }, except: [:updated_at, :user_id, :customer_id]
+         }
       }
    end
 
