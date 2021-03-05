@@ -9,19 +9,12 @@ class CustomersController < ApplicationController
       render json: customer.to_json(customer_serializer_options)
    end
 
-   # This create method below also creates empty tasks when customer is created 
-   # def create
-   #    customer = Customer.new(customer_params)
-   #    customer.user_ids = User.first.id 
-   #    customer.save
-   #    render json: customer.to_json
-   # end
-
    def create
       customer = Customer.create(customer_params)
       render json: customer
    end
 
+   # ONLY THING THAT WORKS 100% 
    def update
       Customer.find(params[:id]).update(customer_params)
       render json: Customer.find(params[:id])
