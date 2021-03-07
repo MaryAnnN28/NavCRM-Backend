@@ -33,23 +33,23 @@ class TasksController < ApplicationController
 
    # DOES NOT PERSIST RIGHT AWAY 
    # MISSING TITLE AT UPDATE 
-   # def create
-   #    task = Task.create(task_params)
-   #    render json: task.to_json(task_serializer_options)
-   # end
-
-
    def create
-      task = Task.new(task_params)
-      if task.save
-         render json: task.to_json(
-            :include => {
-               :customer => {:only => [:first_name, :last_name, :company, :id]}, 
-               :user => {:only => [:first_name, :last_name, :id]}
-            }, :except => [:updated_at]
-         )
-      end
+      task = Task.create(task_params)
+      render json: task.to_json(task_serializer_options)
    end
+
+
+   # def create
+   #    task = Task.new(task_params)
+   #    if task.save
+   #       render json: task.to_json(
+   #          :include => {
+   #             :customer => {:only => [:first_name, :last_name, :company, :id]}, 
+   #             :user => {:only => [:first_name, :last_name, :id]}
+   #          }, :except => [:updated_at]
+   #       )
+   #    end
+   # end
 
 
 
