@@ -40,8 +40,7 @@ class CustomersController < ApplicationController
             # users: {
             #    only: [:id, :first_name, :last_name]
             # }
-         }, 
-         except: [:updated_at]
+         }
       }
    end
 
