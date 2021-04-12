@@ -9,12 +9,6 @@ class UsersController < ApplicationController
       render json: user.to_json(user_serializer_options)
    end
 
-   # def self.from_omniauth(auth)
-   #    where(email: auth.info.email).first_or_initialize do |user|
-   #       user.name = auth.info.name
-   #       user.email = auth.info.email 
-   #    end
-   # end
 
    def create
       user = User.new(user_params)
