@@ -15,8 +15,7 @@ class TasksController < ApplicationController
       render json: task.to_json(task_serializer_options)
    end
 
-   # THIS WORKS!!!!! 
-   def update
+     def update
       task = Task.find(params[:id])
       task.update(task_params)
       render json: task.to_json(task_serializer_options)
@@ -53,29 +52,3 @@ class TasksController < ApplicationController
 
 end
 
-
-
- # UPDATE CLICK GOES IMMEDIATELY TO TASK LIST PAGE 
-   # DOES NOT UPDATE TASK TITLE UNTIL REFRESH 
-   # BUT HAS ALL THE DATA 
-   # def update
-   #    task = Task.find(params[:id]).update(task_params)
-   #    render json: task.to_json(task_serializer_options)
-   # end
-
-   # UPDATE CLICK GOES IMMEDIATELY TO TASK LIST PAGE 
-   # UPDATES TASK TITLE IMMEDIATELY 
-   # MISSING CUSTOMER AND COMPANY UNTIL REFRESH 
-   # def update
-   #    Task.find(params[:id]).update(task_params)
-   #    render json: Task.find(params[:id])
-   # end
-
-
-   # UPDATE CLICK GOES IMMEDIATELY TO TASK LIST PAGE  
-   # DOES NOT UPDATE TASK TITLE UNTIL REFRESH 
-   # BUT HAS ALL THE DATA 
-   # def update
-   #    Task.find(params[:id]).update(task_params)
-   #    render json: task.to_json(task_serializer_options)
-   # end

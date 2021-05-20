@@ -14,7 +14,6 @@ class CustomersController < ApplicationController
       render json: customer
    end
 
-   # ONLY THING THAT WORKS 100% 
    def update
       Customer.find(params[:id]).update(customer_params)
       render json: Customer.find(params[:id])
@@ -37,9 +36,6 @@ class CustomersController < ApplicationController
             tasks: {
                except: [:updated_at]
             } 
-            # users: {
-            #    only: [:id, :first_name, :last_name]
-            # }
          }
       }
    end
